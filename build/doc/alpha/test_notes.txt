@@ -1,0 +1,24 @@
+Notes to testers:
+
+Although this is a backward compatible update of the ks0108  GLCD library, it has been significantly
+improved and much of the low level infrastructure has been replaced with code
+that is higher performance and is more flexible.  This was made possible through the expertise
+of Bill Perry who did the lions share of work on the new code.
+
+Things to test for:
+
+1. Do the example sketches compile and function as expected in your environment?
+2. If you have code written for the previous ks0108 library, does it run with this release?
+   (see section on migrating code in the supplied documentation)
+3. Is the supported functionally adequate and do things work as expected
+4. Is the documentation clear and correct 
+   (feel free to add comments or make changes in the Word document included in the glcd/doc directory)
+
+Your feedback is appreciated, when reporting issues, please say what OS and Arduino version you were testing.
+
+Note:
+While there is documenation in html form which can be brought up by
+clicking on glcd/doc/GLCDref.htm , it is very much in flux in terms of its
+look and feel and is also incomplete.
+As such, we really are not yet looking for detailed comments on the HTML version
+of the documenation other than perhaps very general comments.

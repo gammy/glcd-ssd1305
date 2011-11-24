@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/394/trunk/glcd/config
+END
+ks0108_Sanguino.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/341/trunk/glcd/config/ks0108_Sanguino.h
+END
+Modagm1264f_Manual_Config.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/339/trunk/glcd/config/Modagm1264f_Manual_Config.h
+END
+Modvk5121_Manual_Config.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/343/trunk/glcd/config/Modvk5121_Manual_Config.h
+END
+ks0108_Teensy.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/341/trunk/glcd/config/ks0108_Teensy.h
+END
+ks0108_Mega.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/341/trunk/glcd/config/ks0108_Mega.h
+END
+ks0108-192x64_Panel.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/394/trunk/glcd/config/ks0108-192x64_Panel.h
+END
+ks0108_Panel.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/394/trunk/glcd/config/ks0108_Panel.h
+END
+ks0108_Arduino.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/341/trunk/glcd/config/ks0108_Arduino.h
+END
+ks0108_Manual_Config.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/341/trunk/glcd/config/ks0108_Manual_Config.h
+END

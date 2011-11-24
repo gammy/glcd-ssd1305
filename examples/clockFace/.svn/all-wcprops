@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/265/trunk/glcd/examples/clockFace
+END
+clockFace.pde
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/265/trunk/glcd/examples/clockFace/clockFace.pde
+END
+AnalogClock.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/239/trunk/glcd/examples/clockFace/AnalogClock.h
+END
+AnalogClock.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/135/trunk/glcd/examples/clockFace/AnalogClock.cpp
+END

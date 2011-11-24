@@ -1,0 +1,30 @@
+/**
+@mainpage GLCD Graphical LCD Library
+
+@image html glcdlib.jpg
+
+The Graphical LCD library makes it easy to use Graphical LCDs (GLCD) with Arduino.
+The library supports several different chips and is easy to integrate with different panels.
+The graphical functions are backwards compatible (except where noted) with the previous
+ks0108 library so existing ks0108 sketches should work with little or no modification to their code.
+The configuration mechanism allows using a broad range of GLCD panels and ATmega controllers.
+Configuration in this library is handled differently than the previous ks0108 library
+so any ks0108 configuration information will need modification to work with the library. 
+See \ref page_ks0108_libmigrate for details on how to migrate existing code or configurations
+to the new library.
+
+@subpage page_wiring "Wiring"
+
+@subpage page_configuring "Configuration"
+
+@subpage page_GLCD_methods "GLCD Methods"
+
+@subpage page_FontsBitmaps "Using Fonts and Bitmaps"
+
+@subpage page_troubleshoot "Troubleshooting"
+
+@subpage page_ks0108_libmigrate "Migrating from ks0108 library"
+
+@subpage glcd_deprecated "Deprecated ks0108 Functions"
+
+*/

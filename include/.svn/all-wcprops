@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/401/trunk/glcd/include
+END
+Streaming.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/202/trunk/glcd/include/Streaming.h
+END
+glcd_Deprecated.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/354/trunk/glcd/include/glcd_Deprecated.h
+END
+gText.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/354/trunk/glcd/include/gText.h
+END
+delay.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/396/trunk/glcd/include/delay.h
+END
+glcd_io.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/401/trunk/glcd/include/glcd_io.h
+END
+avrio.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/224/trunk/glcd/include/avrio.h
+END
+glcd_Device.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/358/trunk/glcd/include/glcd_Device.h
+END
+arduino_io.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/394/trunk/glcd/include/arduino_io.h
+END

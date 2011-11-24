@@ -1,0 +1,186 @@
+/*
+ * Documenation about migration and for those familiar with the original ks0108 library
+ */
+
+/**
+@page page_ks0108_libmigrate ks0108 library migration
+@image html ks0108lib.jpg
+
+The glcd library is an extensive modification of the ks0108 library. It now supports more
+chips and is easier to integrate with different panels.
+The graphical functions are backwards compatible (except where noted) so existing sketches
+should work with little or no modification to the code.  The configuration mechanism has been
+changed to facilitate use with a broad range of GLCD chips and ATmega controllers so the
+configuration information will need modification to work with the new library. 
+
+
+@subpage page_ks0108config\n
+@subpage page_ks0108sketch\n
+@subpage glcd_deprecated "Deprecated ks0108 Functions"
+
+*/
+
+/*
+ * ks0108 configuration migration
+ */
+
+/**
+@page page_ks0108config Migrating Configurations
+
+Configuration has been significantly improved to give a wider
+choice of pins, support for more processor types and more display panels as well as
+make configurtion much simpler.
+Because of this additional functionality, the way panels and pins are configured has
+changed.
+
+The good news is that if you are using the wiring and pins recommend in the ks0108 library,
+you should not have to do anything. It should work "out of the box".
+
+One obvious change is that all the ks0108 configuration files have been relocated to a config directory.
+
+There is now a master configuration file that determines which configuration is "active".
+This master configuration file is glcd_Config.h and is not in the config directory.
+
+The glcd library is shipped with ks0108 configuration files that are very 
+similar to the configuraiton files in the ks0108 library. In fact, in fact they preserve many of
+the same ks0108 naming conventions.
+
+There is a ks0108_panel.h file that is used to set panel specific configuration information and there
+are ks0108_{BOARD}.h board specific files to set pin configuration for each board type.
+
+@warning
+While tempting, <b>DO NOT</b> copy any of the existing ks0108.h, ks0108_panel.h, or
+ks0108_{BOARD}.h files to the config directory. This will not work as the glcd library versions of the
+header files have additional defines that are not present in the ks0108 version of the header files.
+
+
+The glcd low level code has been rewritten to greatly simplify configuration as well as allow
+greater flexibility in AVR pin assignment.
+As a result, it is no longer necessary to manually configure any AVR port information,
+including byte vs nibble mode or be restricted to using particular nibbles or pins.
+
+<b>Any AVR/Arduino pin can now be used for any GLCD pin function.</b>
+
+There are no longer any restristions as to which Arduino/AVR pins must be used for any
+glcd function. Simply specify the pin and
+at compile time, the code will automagically figure out the best possible mode
+for the configured pins and generate the smallest/fastest code including single
+instructions when possible. If all the data pins are on the same AVR port
+and in the proper order, byte mode will be used, if pins span ports but are are
+sequential and nibble aligned, then nibble mode will be used.
+The code will drop down to individual bit i/o if necessary. The code is even
+smart enough to use nibble mode for one nibble an then bit i/o for the other bits
+in the data byte.
+
+While the code does support any Arduino/AVR pin for any glcd function, if
+pins are grouped appropriately on the AVR ports, the code can take advantage of
+byte or nibble mode to offer a potential performance increase.
+
+The very low level routines were also rewritten to accurately honor all the 
+delay timing values in the ks0108 data sheet. (which was not previously the case)
+The code now also uses real timing cycle delay loops based on nanoseconds which
+are scaled to the processor speed. Since all the delay timing values are based on the
+datastheet delay values, there normally is no need to have to adjust these values.
+
+<b>Gone is all messing with EN_DELAY_VALUE.</b>
+
+The new library has been tested with many different panels and should "just work".
+If for some reason the panel is an odd panel with significantly slower timing,
+each individual timing delay value can be adjusted in the ks0108_Panel.h file to match the datasheet specification.
+
+
+<b>The code now allows configuring the number of glcd CSEL chip select lines as well as the behavior
+of those pins.</b>
+
+This is useful when configuring for displays larger than 128x64 as different displays
+handle the CSEL lines differently.
+
+
+In terms of how to actually move a custom pin configuration from the ks0108 library to the glcd library:
+
+Normally, for a standard 128x64 ks0108 panel, the only changes necessary for a custom
+pin configuration will be to modify the ks0108_{BOARD}.h file. Everthing else will
+automatically configure itself.
+
+If the custom configuration is more complex than simple pin changes to a 128x64 display:
+
+- Edit the glcd_Config.h file to select the Active config file (normally not necessary for ks0108)
+- Edit the ks0108_panel.h to verify/set proper values for:
+ - DISPLAY_WIDTH
+ - DISPLAY_HEIGHT
+ - CHIP_HEIGHT
+ - CHIP_WIDTH
+ - If necessary, modify NBR_CHIP_SELECT_PINS and corresponding glcd_CHIPx defines
+- Edit ks0108_{BOARD}.h to verify/set all the pin values
+
+
+See the library configuration page for full details on configuration:
+@ref page_configuring
+
+*/
+
+/*
+ * ks0108 sketch migration
+ */
+
+/**
+@page page_ks0108sketch Sketch Migration
+The distribution includes the system font and arial14 font, but these are now in a subdirectory 
+called 'fonts' so you will need to modify the include statement, for example change:
+\code
+#include "SystemFont5x7.h"       // system font
+\endcode
+To 
+\code
+#include "fonts/SystemFont5x7.h"       // system font
+\endcode
+
+Bitmaps are now in a subdirectory called 'bitmaps' so change :
+\code
+ #include "ArduinoIcon.h"  // the bitmap distributed with the ks0108 lib
+\endcode
+To
+\code
+#include "bitmaps/ArduinoIcon.h"  // 64x64 bitmap
+\endcode
+
+The file bitmap filenames now include the width and height so
+while the ArduinoIcon.h bitmap file is available for backward compability and will map
+to ArduinoIcon64x64.h it is recommended to use the new bitmap file names for clarity.
+
+
+If you are using any of the following functions you should either change the code use the new
+function names.
+- DrawVertLine(x, y, length, color)  is now:   \ref glcd::DrawVLine() "DrawVLine(x, y, length, color)"
+- DrawHoriLine(x, y, length, color)  is now :  \ref glcd::DrawHLine() "DrawHLine(x, y, length, color)"
+- ClearSysTextLine(row)  is now \ref gText::EraseTextLine() "EraseTextLine(row)"
+
+Alternatively you may add the deprecated include header file to your sketch toautomatically
+map the deprecated old functions name to the newer names.
+\code
+#include "include/glcd_Deprecated.h" // header to map old function names to new functin names
+\endcode
+
+The character output functions behave differently in the new library. 
+The new library now sets or clears all pixels of a font (glyph), the old library did not
+consistently erase pixels in the whitespace below the glyph.
+This means that if there are graphics very close below the character they may be overwritten
+with the new text ouput code.
+The workaround is to either move the graphics objects so they are not cleared when the text
+is written or to draw the graphical objects after the text is displayed. 
+
+Another change is the way a string wraps on the newline character. The ks0108 library wrapped
+to the column where the string started, the glcd library now wraps to the beginning of the text area.
+See the section on @ref gText::DefineArea() "Text Areas" to see how you can use this new capability to control where 
+text will wrap on the display.
+
+See the section on @ref page_configuring "Configuration" for details on the new configuration files.
+You can use the same wiring as the old library but the configuration file format has changed.
+The ks0108_Config,h file included in the distribution uses exactly the same pins as the ks0108_Arduino.h
+file supplied with the old library, but if you changed the Arduino pin numbers you will need
+to modify ks0108_Config to match your wiring.
+
+For an example of a ks0108 library sketch that has been migrated to the glcd library
+see the ks0108example sketch in the glcd library examples.
+
+*/

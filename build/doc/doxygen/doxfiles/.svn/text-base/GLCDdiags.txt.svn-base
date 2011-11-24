@@ -1,0 +1,32 @@
+Serial initialized
+--------------------------------------------------------------------
+GLCD Lib Configuration: glcd ver: 3 glcd_Device ver: 1 gText ver: 1
+Panel Configuration:ks0108
+Pin Configuration:ks0108-Arduino
+--------------------------------------------------------------------
+GLCD:ks0108 DisplayWidth:128 DisplayHeight:64
+Chips:2 ChipWidth:64 ChipHeight:64
+ CSEL1:14(PIN_C0) CSEL2:15(PIN_C1)
+ RW:16(PIN_C2) DI:17(PIN_C3) EN:18(PIN_C4)
+ D0:8(PIN_B0) D1:9(PIN_B1) D2:10(PIN_B2) D3:11(PIN_B3)
+ D4:4(PIN_D4) D5:5(PIN_D5) D6:6(PIN_D6) D7:7(PIN_D7)
+Delays: tDDR:320 tAS:140 tDSW:200 tWH:450 tWL:450
+ChipSelects: CHIP0:(14,0x1, 15,0x0) CHIP1:(14,0x0, 15,0x1)
+Data mode: 
+ d0-d3:nibble mode
+ d4-d7:nibble mode
+--------------------------------------------------------------------
+Diag Loop: 1
+Initializing GLCD
+Displaying ChipSelect Screens
+Walking 1s data test
+Wr/Rd Chip Select Test
+Testing GLCD memory pages
+Horizonal Page Test Chip: 0 Pixels 0-63
+Vertical Page Test Chip: 0 Pixels 0-63
+Horizonal Page Test Chip: 1 Pixels 64-127
+Vertical Page Test Chip: 1 Pixels 64-127
+Full Module Horizontal Page Test:Pixels 0-127
+Full Module Vertical Page Test:Pixels 0-127
+Tests PASSED
+GLCD.SetDot() speed (K ops/sec): 16.39

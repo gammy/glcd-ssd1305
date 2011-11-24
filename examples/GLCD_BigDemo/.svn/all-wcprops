@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/383/trunk/glcd/examples/GLCD_BigDemo
+END
+clockFace.pde
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/240/trunk/glcd/examples/GLCD_BigDemo/clockFace.pde
+END
+AnalogClock.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/181/trunk/glcd/examples/GLCD_BigDemo/AnalogClock.h
+END
+bitmaps.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/181/trunk/glcd/examples/GLCD_BigDemo/bitmaps.h
+END
+GLCD_BigDemo.pde
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/383/trunk/glcd/examples/GLCD_BigDemo/GLCD_BigDemo.pde
+END
+life.pde
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/360/trunk/glcd/examples/GLCD_BigDemo/life.pde
+END
+BigDemo.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/231/trunk/glcd/examples/GLCD_BigDemo/BigDemo.h
+END
+Rocket.pde
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/216/trunk/glcd/examples/GLCD_BigDemo/Rocket.pde
+END
+AnalogClock.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/181/trunk/glcd/examples/GLCD_BigDemo/AnalogClock.cpp
+END

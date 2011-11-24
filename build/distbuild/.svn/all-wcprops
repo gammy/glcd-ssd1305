@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/366/trunk/glcd/build/distbuild
+END
+mkzip.bat
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/366/trunk/glcd/build/distbuild/mkzip.bat
+END
+mkzipsubst.bat
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/213/trunk/glcd/build/distbuild/mkzipsubst.bat
+END
+runmkzip.bat
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/213/trunk/glcd/build/distbuild/runmkzip.bat
+END
+ReadMe.txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/226/trunk/glcd/build/distbuild/ReadMe.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/213/trunk/glcd/build/distbuild/Makefile
+END
