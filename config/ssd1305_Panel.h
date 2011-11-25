@@ -18,11 +18,11 @@
 /*********************************************************/
 /*  Configuration for LCD panel specific configuration   */
 /*********************************************************/
-#define DISPLAY_WIDTH 132
+#define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 
 // panel controller chips
-#define CHIP_WIDTH     DISPLAY_WIDTH  // pixels per chip
+#define CHIP_WIDTH     132 // pixels per chip
 #define CHIP_HEIGHT    64  // pixels per chip
 
 /*
