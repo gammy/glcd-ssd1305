@@ -29,7 +29,7 @@
 
 #define WriteCmd(cmd)	(this->WriteCommand(cmd, 0))
 
-// From SSD1305.h by "Andrea"
+// From SSD1305.h by "Andrea" with a few additions
 #define SSD1305_SETLOWCOLUMN		0x00
 #define SSD1305_SETHIGHCOLUMN		0x10
 #define SSD1305_SETSTARTCOLUMN		0x21
@@ -532,6 +532,12 @@ void glcd_Device::Init(uint8_t invert)
 
 	this->SetPixels(0,0, DISPLAY_WIDTH-1,DISPLAY_HEIGHT-1, WHITE);
 	this->GotoXY(0,0);
+}
+
+void glcd_Device::SetContrast(uint8_t value)
+{  
+		WriteCmd(SSD1305_SETCONTRAST);
+		WriteCmd(value);
 }
 
 #ifdef glcd_CHIP0  // if at least one chip select string
