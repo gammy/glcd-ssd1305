@@ -21,7 +21,11 @@ Copyright (c) 2009 Mikal Hart.  All rights reserved.
 #ifndef ARDUINO_STREAMING
 #define ARDUINO_STREAMING
 
-#include <WProgram.h>
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "Arduino.h"
+#else
+#include "WProgram.h"
+#endif
 
 #define STREAMING_LIBRARY_VERSION 3
 

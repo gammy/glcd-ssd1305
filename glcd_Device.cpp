@@ -235,9 +235,24 @@ void glcd_Device::SetDot(uint8_t x, uint8_t y, uint8_t color)
 
 void glcd_Device::SetPixels(uint8_t x, uint8_t y,uint8_t x2, uint8_t y2, uint8_t color)
 {
-uint8_t mask, pageOffset, h, i, data;
-uint8_t height = y2-y+1;
-uint8_t width = x2-x+1;
+
+#if 0
+		if(x > x2) {
+				uint8_t t = x2;
+				x2 = x;
+				x = t;
+		}
+
+		if(y > y2) {
+				uint8_t t = y2;
+				y2 = y;
+				y = t;
+		}
+#endif
+
+	uint8_t mask, pageOffset, h, i, data;
+	uint8_t height = y2-y+1;
+	uint8_t width = x2-x+1;
 	
 	pageOffset = y%8;
 	y -= pageOffset;
@@ -875,7 +890,7 @@ void glcd_Device::WriteData(uint8_t data) {
 /*
  * needed to resolve virtual print functions
  */
-void glcd_Device::write(uint8_t) // for Print base class
+size_t glcd_Device::write(uint8_t) // for Print base class
 {
 
 }

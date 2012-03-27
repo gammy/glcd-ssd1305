@@ -83,7 +83,7 @@ class glcd_Device : public Print
 	inline void SelectChip(uint8_t chip); 
 	void WaitReady(uint8_t chip);
 	void WaitReset(uint8_t chip); // doesnt always exist, depends on ifdefs in code
-	void write(uint8_t); // for Print base class
+	size_t write(uint8_t); // for Print base class
 	
   public:
     glcd_Device();

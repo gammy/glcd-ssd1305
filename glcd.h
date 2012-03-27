@@ -56,7 +56,7 @@ typedef const uint8_t* Image_t;
 class glcd : public gText  
 {
   private:
-	void write(uint8_t c);  // character output for print base class
+	size_t write(uint8_t c);  // character output for print base class
   public:
 	glcd();
 	

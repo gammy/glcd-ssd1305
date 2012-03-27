@@ -236,7 +236,7 @@ class gText : public glcd_Device
 	void SetFontColor(uint8_t color); // new method
 
     void CPrintFloat(float n, int16_t originx, int16_t originy);
-    void CPrintNumber(long n, int radix, int16_t originx, int16_t originy);
+    void CPrintNumber(signed long n, int radix, int16_t originx, int16_t originy);
 #if 0
     void GetCharDims(char c, int16_t *w, int16_t *h);
 #endif
@@ -249,7 +249,7 @@ class gText : public glcd_Device
 	void DrawString(char *str, uint8_t x, uint8_t y);
 	void DrawString_P(PGM_P str, uint8_t x, uint8_t y);
 
-	void write(uint8_t c);  // character output for print base class
+	size_t write(uint8_t c);  // character output for print base class
 
 	void CursorTo( uint8_t column, uint8_t row); // 0 based coordinates for character columns and rows
 	void CursorTo( int8_t column); // move cursor on the current row

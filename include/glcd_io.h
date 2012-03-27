@@ -28,7 +28,7 @@
 #ifndef	GLCD_IO_H
 #define GLCD_IO_H
 
-#include "wiring.h"
+//#include "wiring.h"
 #include "include/arduino_io.h"    // these macros map arduino pins
 
 /*
@@ -147,6 +147,7 @@
  * a register when the number cycles is less than 12.
  */
 #include "include/delay.h" // Hans' Heirichs delay macros
+#include "Arduino.h"
 
 #define lcdDelayNanoseconds(__ns) _delay_cycles( (double)(F_CPU)*((double)__ns)/1.0e9 + 0.5 ) // Hans Heinrichs delay cycle routine
 

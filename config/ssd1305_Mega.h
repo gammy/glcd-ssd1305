@@ -39,14 +39,14 @@
  * Data pin definitions
  * This version uses pins 22-29 for LCD Data 
  */
-#define glcdData0Pin    22
-#define glcdData1Pin    23
-#define glcdData2Pin    24
-#define glcdData3Pin    25
-#define glcdData4Pin    26
-#define glcdData5Pin    27
-#define glcdData6Pin    28
-#define glcdData7Pin    29
+#define glcdData0Pin    29
+#define glcdData1Pin    28
+#define glcdData2Pin    27
+#define glcdData3Pin    26
+#define glcdData4Pin    25
+#define glcdData5Pin    24
+#define glcdData6Pin    23
+#define glcdData7Pin    22
 
 #define glcdRES         40    // Reset Bit
 
