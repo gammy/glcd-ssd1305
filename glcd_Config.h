@@ -2,7 +2,7 @@
  * glcd_Config.h - User specific configuration for Arduino GLCD library
  *
  * This file is shipped to automatically configure the library for a 
- * 128x64 ssd1305 panel using the wiring described in the documentation.
+ * 128x64 ks0108 panel using the wiring described in the documentation.
  *
  * Use this file to select the active glcd configuration file
  * Then edit the selected panel file to configure parameters for that panel.
@@ -69,7 +69,8 @@
  /*
   * autoconfig includes - (comment this out if using manual configurations, see below)
   */
-#include "config/ssd1305_Panel.h"           // automatically configure library for a ssd1305 panel
+//#include "config/ks0108_Panel.h"          // automatically configure library for a ks0108 panel
+#include "config/ks0108-192x64_Panel.h"   // automatically configure library for a ks0108 192x64 panel
 
 /*
  * If you want to explicitly select a manual configuration, you can edit the desired manual configuration
@@ -80,7 +81,11 @@
  * and make sure that all the other config  #includes are commented (including the autoconfig above) 
  */
 
-#include "config/ssd1305_Mega.h"                 // Configuration for ssd1305 display
+//#include "config/ks0108_Manual_Config.h"       // generic ks0108 configuration
+
+//#include "config/Modadm12864f_Manual_Config.h" // configuration for BGMicro 128x64 display with pinout diagram
+//#include "config/Modvk5121_Manual_Config.h"    // configuration for vk5121 122x32 display with pinout diagram
+#include "config/ks0108_Mega.h"
 
 /*========================== Optional User Defines ==================================*/
 

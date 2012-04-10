@@ -404,16 +404,6 @@ void glcd::SetDisplayMode(uint8_t invert) {  // was named SetInverted
 	}
 }
 
-
-/**
- * Set contrast of display
- *
- * @param contrast
- *
- */
-void glcd::SetContrast(uint8_t value){
-	glcd_Device::SetContrast(value);  
-}		
 /**
  * Draw a bitmap image
  *

@@ -67,7 +67,6 @@ class glcd : public gText
 	// Control functions
 	void Init(uint8_t invert = NON_INVERTED);
 	void SetDisplayMode(uint8_t mode); //NON_INVERTED or INVERTED,   was SetInverted(uint8_t invert);
-	void SetContrast(uint8_t value);
 /*@}*/
 	
 /** @name DRAWING FUNCTIONS

@@ -27,37 +27,6 @@
 #include "include/glcd_Device.h"
 #include "include/glcd_io.h"
 
-#define WriteCmd(cmd)	(this->WriteCommand(cmd, 0))
-
-// From SSD1305.h by "Andrea" with a few additions
-#define SSD1305_SETLOWCOLUMN		0x00
-#define SSD1305_SETHIGHCOLUMN		0x10
-#define SSD1305_SETSTARTCOLUMN		0x21
-#define SSD1305_SETSTARTPAGE		0x22
-#define SSD1305_MEMORYMODE			0x20
-#define SSD1305_SETSTARTLINE		0x40
-#define SSD1305_SETCONTRAST			0x81
-#define SSD1305_SEGREMAP			0xA0
-#define SSD1305_SEGREMAP1			0xA1
-#define SSD1305_DISPLAYALLON_RESUME 0xA4
-#define SSD1305_DISPLAYALLON		0xA5
-#define SSD1305_NORMALDISPLAY		0xA6
-#define SSD1305_INVERTDISPLAY		0xA7
-#define SSD1305_SETMULTIPLEX		0xA8
-#define SSD1305_DCVOLTCONVERT       0xAD
-#define SSD1305_DISPLAYOFF			0xAE
-#define SSD1305_DISPLAYON			0xAF
-#define SSD1305_SET_PAGE			0xB0
-#define SSD1305_COMSCANDEC			0xC8
-#define SSD1305_SETDISPLAYOFFSET	0xD3
-#define SSD1305_SETDISPLAYCLOCKDIV	0xD5
-#define SSD1305_SETPRECHARGE		0xD9
-#define SSD1305_SETCOMPINS			0xDA
-#define SSD1305_SETVCOMDETECT		0xDB
-#define SSD1305_SET_MODIFY			0xE0
-#define SSD1305_CLR_MODIFY			0xEE
-#define SSD1305_NOP					0xE3
-
 
 /*
  * define the static variables declared in glcd_Device
@@ -132,51 +101,6 @@ glcd_Device::glcd_Device(){
   
 }
 
-// ssd1305-specific initialization 
-void glcd_Device::glcd_DeviceInit(int chip) {
-
-		// Custom init sequence 
-		WriteCmd(SSD1305_DISPLAYOFF);         // Display = off
-		WriteCmd(SSD1305_DCVOLTCONVERT);      // DC-DC voltage regulator =
-		WriteCmd(0x8A);                       //     Disabled (8A = off, 8B = on)
-
-		WriteCmd(SSD1305_SETMULTIPLEX);       // Multiplex ratio =
-		WriteCmd(0x3F);                       //     1/64
-
-		WriteCmd(SSD1305_SETDISPLAYOFFSET);   // Display offset = 
-		WriteCmd(0x00);                       //     0
-
-		WriteCmd(SSD1305_SETSTARTLINE);       // Display start line =
-		WriteCmd(0xA0);                       //     A0 = normal, A1 = reversed
-
-		WriteCmd(SSD1305_COMSCANDEC);         // Set common output scan direction 
-		                                      // to remapped mode.
-
-	//	WriteCmd(0xC0); // Common output scan direction = WRONG
-	//	WriteCmd(0xA6); //     A6 = normal, A7 = reversed WRONG
-
-//		WriteCmd(SSD1305_DISPLAYALLON); // -Entire- display OFF (A4 = off, A5 = on)
-
-		WriteCmd(SSD1305_SETCONTRAST);        // Contrast = 
-		WriteCmd(0xFF);                       //     Max (00 to ff)
-
-		WriteCmd(SSD1305_SETDISPLAYCLOCKDIV); // Clock divider & OSC frequency = 
-		WriteCmd(0xF0);                       //     "max"
-
-		//WriteCmd(0x70); // Set lower column address(low nybble = 0)
-		WriteCmd(SSD1305_SETPRECHARGE);       // Pre/Discharge period = 
-		WriteCmd(0x00);                       //     ?
-
-		WriteCmd(SSD1305_MEMORYMODE);         // Addressing mode =
-		WriteCmd(0x02);                       //     0=Hori, 1=Vert, 2=Page
-
-		WriteCmd(SSD1305_SEGREMAP1);
-
-		WriteCmd(SSD1305_DISPLAYON);          // Display = on
-
-		// TODO [delay 5000L NOPs] 
-}
-
 /**
  * set pixel at x,y to the given color
  *
@@ -235,24 +159,9 @@ void glcd_Device::SetDot(uint8_t x, uint8_t y, uint8_t color)
 
 void glcd_Device::SetPixels(uint8_t x, uint8_t y,uint8_t x2, uint8_t y2, uint8_t color)
 {
-
-#if 0
-		if(x > x2) {
-				uint8_t t = x2;
-				x2 = x;
-				x = t;
-		}
-
-		if(y > y2) {
-				uint8_t t = y2;
-				y2 = y;
-				y = t;
-		}
-#endif
-
-	uint8_t mask, pageOffset, h, i, data;
-	uint8_t height = y2-y+1;
-	uint8_t width = x2-x+1;
+uint8_t mask, pageOffset, h, i, data;
+uint8_t height = y2-y+1;
+uint8_t width = x2-x+1;
 	
 	pageOffset = y%8;
 	y -= pageOffset;
@@ -317,7 +226,6 @@ void glcd_Device::SetPixels(uint8_t x, uint8_t y,uint8_t x2, uint8_t y2, uint8_t
  * is the upper left most pixel on the display.
  */
 
-#if 0
 void glcd_Device::GotoXY(uint8_t x, uint8_t y)
 {
   uint8_t chip, cmd;
@@ -373,32 +281,6 @@ void glcd_Device::GotoXY(uint8_t x, uint8_t y)
 #endif
 	}
 }
-#endif
-
-
-#if 1
-void glcd_Device::GotoXY(uint8_t x, uint8_t y)
-{
-  uint8_t chip, cmd;
-
-  if((x == this->Coord.x) && (y == this->Coord.y))
-	return;
-
-  if( (x > DISPLAY_WIDTH-1) || (y > DISPLAY_HEIGHT-1) )	// exit if coordinates are not legal  
-  {
-    return;
-  }
-
-  this->Coord.x = x;								// save new coordinates
-  this->Coord.y = y;
-
-  WriteCmd(SSD1305_SETSTARTCOLUMN);
-  WriteCmd(x);
-  WriteCmd(DISPLAY_WIDTH - 1);
-  WriteCmd(SSD1305_SET_PAGE + (y / 8));
-}
-#endif
-
 /**
  * Low level h/w initialization of display and AVR pins
  *
@@ -522,13 +404,12 @@ void glcd_Device::Init(uint8_t invert)
 		lcdDelayMilliseconds(50); // extra delay for *very* slow rising reset signals
 #endif
 
-//#ifdef glcd_DeviceInit // this provides override for chip specific init -  mem 8 Dec 09
+#ifdef glcd_DeviceInit // this provides override for chip specific init -  mem 8 Dec 09
         glcd_DeviceInit(chip);  // call device specific initialization if defined    
-//#else
-//		#error this is not supposed to be executed
-//		this->WriteCommand(LCD_ON, chip);			// display on
-//		this->WriteCommand(LCD_DISP_START, chip);	// display start line = 0
-//#endif
+#else
+		this->WriteCommand(LCD_ON, chip);			// display on
+		this->WriteCommand(LCD_DISP_START, chip);	// display start line = 0
+#endif
 
 	}
 
@@ -547,12 +428,6 @@ void glcd_Device::Init(uint8_t invert)
 
 	this->SetPixels(0,0, DISPLAY_WIDTH-1,DISPLAY_HEIGHT-1, WHITE);
 	this->GotoXY(0,0);
-}
-
-void glcd_Device::SetContrast(uint8_t value)
-{  
-		WriteCmd(SSD1305_SETCONTRAST);
-		WriteCmd(value);
 }
 
 #ifdef glcd_CHIP0  // if at least one chip select string
@@ -574,7 +449,6 @@ __inline__ void glcd_Device::SelectChip(uint8_t chip)
 
 void glcd_Device::WaitReady( uint8_t chip)
 {
-
 	// wait until LCD busy bit goes to zero
 	glcd_DevSelectChip(chip);
 	lcdDataDir(0x00);
@@ -584,8 +458,10 @@ void glcd_Device::WaitReady( uint8_t chip)
 	glcd_DevENstrobeHi(chip);
 	lcdDelayNanoseconds(GLCD_tDDR);
 
-	//while(lcdIsBusy());
-
+	while(lcdIsBusy())
+	{
+       ;
+	}
 	glcd_DevENstrobeLo(chip);
 }
 
@@ -631,7 +507,6 @@ uint8_t glcd_Device::DoReadData()
 
 	glcd_DevENstrobeLo(chip);
 #ifdef GLCD_XCOL_SUPPORT
-#error huh what
 	this->Coord.chip[chip].col++;
 #endif
 	return data;

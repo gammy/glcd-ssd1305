@@ -23,7 +23,7 @@
  * Pins used for Commands
  */
 #define glcdCSEL1     33    // CS1 Bit  
-//#define glcdCSEL2     34    // CS2 Bit
+#define glcdCSEL2     34    // CS2 Bit
 #define glcdRW        35    // R/W Bit
 #define glcdDI        36    // D/I Bit 
 #define glcdEN        37    // EN Bit

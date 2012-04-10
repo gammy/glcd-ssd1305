@@ -698,18 +698,18 @@ char *ftoa(char *str, double val, int precision) {
 }
 // Print number around origin 
 #if 1
-void gText::CPrintNumber(signed long n, int radix, int16_t originx, int16_t originy){
+void gText::CPrintNumber(long n, int radix, int16_t originx, int16_t originy){
 
 	char buf[16];
 	int16_t w = 0, h = 0; 
 
-	sprintf(buf, "%d", n);
+	sprintf(buf, "%u", n);
 	w = StringWidth(buf);
 
 	this->x = originx - (.5 * w);
 	this->y = originy - (.5 * EmergencyFontRead(FONT_HEIGHT));
 
-	Printf("%d", n);
+	Printf("%u", n);
 	
 }
 #endif
