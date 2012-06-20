@@ -39,7 +39,8 @@
  * Most panels use two pins for chip select,
  * but check your datasheet to see if a different number is required
  */
-#define NBR_CHIP_SELECT_PINS   2 // the number of chip select pins required for this panel 
+#define NBR_CHIP_SELECT_PINS   1 // the number of chip select pins required for this panel 
+//#define NBR_CHIP_SELECT_PINS   2 // the number of chip select pins required for this panel 
 
 /*
  * The following conditional statements determine the relationship between the chip select
@@ -64,6 +65,7 @@
  */
 #elif  glcd_CHIP_COUNT == 3 
 
+
 #define glcd_CHIP0  glcdCSEL1,LOW,  glcdCSEL2,HIGH    
 #define glcd_CHIP1  glcdCSEL1,HIGH, glcdCSEL2,LOW
 #define glcd_CHIP2  glcdCSEL1,LOW,  glcdCSEL2,LOW
@@ -82,6 +84,7 @@
  * Defines for Two Chip panels using one Chip Select pin 
  */
 #elif  (NBR_CHIP_SELECT_PINS == 1 && glcd_CHIP_COUNT == 2)  
+
 #define glcd_CHIP0  glcdCSEL1,LOW
 #define glcd_CHIP1  glcdCSEL1,HIGH    
 

@@ -121,6 +121,7 @@
 #define lcdReset()		avrio_WritePin(glcdRES, 0)
 #define lcdUnReset()	avrio_WritePin(glcdRES, 1)
 #else
+#error We expect glcdRES(ET) to be defined.
 #define lcdReset()		
 #define lcdUnReset()		
 #endif
@@ -146,6 +147,7 @@
  * a register when the number cycles is less than 12.
  */
 #include "include/delay.h" // Hans' Heirichs delay macros
+#include "Arduino.h"
 
 #define lcdDelayNanoseconds(__ns) _delay_cycles( (double)(F_CPU)*((double)__ns)/1.0e9 + 0.5 ) // Hans Heinrichs delay cycle routine
 

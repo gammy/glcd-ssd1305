@@ -99,7 +99,7 @@ The following lcd primitives must be defined
  * (if needed)
  */
 
- * Convert X & Y coordinates to chip values
+/* Convert X & Y coordinates to chip values
  */
 #define	glcd_DevXYval2Chip(x,y)
 #define	glcd_DevXval2ChipCol(x)

@@ -235,8 +235,9 @@ class gText : public glcd_Device
 	void SelectFont(Font_t font, uint8_t color=BLACK, FontCallback callback=ReadPgmData); // default arguments added, callback now last arg
 	void SetFontColor(uint8_t color); // new method
 
+	void CPuts(char *buf, int16_t originx, int16_t originy);
     void CPrintFloat(float n, int16_t originx, int16_t originy);
-    void CPrintNumber(long n, int radix, int16_t originx, int16_t originy);
+    void CPrintNumber(signed long n, int radix, int16_t originx, int16_t originy);
 #if 0
     void GetCharDims(char c, int16_t *w, int16_t *h);
 #endif

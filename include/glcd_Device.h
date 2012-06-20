@@ -76,6 +76,7 @@ class glcd_Device : public Print
 {
   private:
   // Control functions
+	void glcd_DeviceInit(int chip);
 	uint8_t DoReadData(void);
 	void WriteCommand(uint8_t cmd, uint8_t chip);
 	inline void Enable(void);
@@ -88,6 +89,14 @@ class glcd_Device : public Print
     glcd_Device();
 	//protected:  uncommented by gammy for ModeContainer compat
     void Init(uint8_t invert = false);      // now public, default is non-inverted
+	void SetMUX(uint8_t num);
+	void SetupHScroll();
+	void SetupVScroll();
+	void SetupScroll(uint8_t page_beg, uint8_t page_end, int8_t vstep, int8_t hstep, uint8_t delay);
+	void Scroll(bool on);
+	void DisplayOn();
+	void DisplayOff();
+    void SetContrast(uint8_t value);
 	void SetDot(uint8_t x, uint8_t y, uint8_t color);
 	void SetPixels(uint8_t x, uint8_t y,uint8_t x1, uint8_t y1, uint8_t color);
     uint8_t ReadData(void);        // now public

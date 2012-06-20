@@ -57,4 +57,6 @@ The glcd library was created by Michael Margolis. Extensive enhancements
 including the majority of the improvements in this release were led
 by Bill Perry.
 
- 
+ssd1305 (6800 parallel mode) hacks by Kristian Gunstone(IPEC) with code based on
+"Andrea"'s SSD1305 ISP library for AVR (see
+http://www.avrfreaks.net/index.php?name=PNphpBB2&file=viewtopic&p=845965)
